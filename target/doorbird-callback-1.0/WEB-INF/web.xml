@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	version="2.4">
+
+    <display-name>DoorBird Callback</display-name>
+    <description>Simple Servlets to be called by the DoorBird API to deliver notifications (motion sensor and door bell)</description>
+	
+	<context-param>
+		<param-name>user</param-name>
+		<param-value></param-value>
+	</context-param>
+	<context-param>
+		<param-name>password</param-name>
+		<param-value></param-value>
+	</context-param>
+	<context-param>
+		<param-name>ipAddress</param-name>
+		<param-value></param-value>
+	</context-param>
+	<context-param>
+		<param-name>port</param-name>
+		<param-value></param-value>
+	</context-param>
+	
+	<servlet>
+		<servlet-name>DoorBirdNotificationMotionSensor</servlet-name>
+		<servlet-class>DoorBirdNotification</servlet-class>
+		<init-param>
+			<param-name>item</param-name>
+			<param-value>DoorBird_MotionSensor</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<servlet-name>DoorBirdNotificationDoorBell</servlet-name>
+		<servlet-class>DoorBirdNotification</servlet-class>
+		<init-param>
+			<param-name>item</param-name>
+			<param-value>DoorBird_DoorBell</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>DoorBirdNotificationMotionSensor</servlet-name>
+		<url-pattern>/motion-sensor</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DoorBirdNotificationDoorBell</servlet-name>
+		<url-pattern>/door-bell</url-pattern>
+	</servlet-mapping>
+	
+<!--	<security-role>
+		<role-name>doorbird</role-name>
+	</security-role>
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>doorbird-callback</web-resource-name>
+			<url-pattern>/doorbird-callback/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>doorbird</role-name>
+		</auth-constraint>
+		<user-data-constraint>
+			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>
+	
+	<login-config>
+		<auth-method>BASIC</auth-method>
+	</login-config>-->
+	
+</web-app>
